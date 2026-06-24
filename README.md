@@ -10,7 +10,7 @@ https://github.com/bizhangjie/CatVodSpider
 
 <br>
 
-### \# 影视资源采集 / TVBox / [EasyBox](https://easybox.pro/download.html) / [MBox](https://github.com/XiaoRanLiu3119/TVBoxOS-Mobile) / 影视仓 / [FongMi影视](https://github.com/FongMi/Release) / 影迷
+### \# TVBox / [EasyBox](https://easybox.pro/download.html) / [MBox](https://github.com/XiaoRanLiu3119/TVBoxOS-Mobile) / 影视仓 / [FongMi影视](https://github.com/FongMi/Release) / 影迷
 
 - **Mobile App** `建议使用EasyBox`
   - <https://www.lanzoux.com/b00v02s58b> `666`
@@ -21,6 +21,8 @@ https://github.com/bizhangjie/CatVodSpider
 | 影视+直播 | [下载](https://raw.githubusercontent.com/geoisam/FuckScripts/refs/heads/main/json/index.json) | [下载](https://ghfast.top/raw.githubusercontent.com/geoisam/FuckScripts/main/json/index.json) |
 | 🔞🔞🔞 | [下载](https://raw.githubusercontent.com/geoisam/FuckScripts/refs/heads/main/json/adult.json) | [下载](https://ghfast.top/raw.githubusercontent.com/geoisam/FuckScripts/main/json/adult.json) |
 | 优选+直播 | [下载](https://raw.githubusercontent.com/geoisam/FuckScripts/refs/heads/main/json/geoisam.json) | [下载](https://ghfast.top/raw.githubusercontent.com/geoisam/FuckScripts/main/json/geoisam.json) |
+
+### \# 影视资源采集
 
 | **花名** | **地址** | **备注** |
 | :---: | --- | :---: |

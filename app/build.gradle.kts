@@ -35,6 +35,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_21
     }
 
+    packaging {
+        jniLibs {
+            keepDebugSymbols += "**/libquickjs-android-wrapper.so"
+        }
+    }
+
 }
 
 proguardDictionaries {
