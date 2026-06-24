@@ -9,7 +9,6 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
 
@@ -36,6 +35,8 @@ public class ANW51 extends Spider {
     private static final String defaultUrl = "aHR0cHM6Ly93d3cud3dzZnVyZnMuY29t";
     private static final String siteUrl = "aHR0cHM6Ly81MWF3LmNvbQ";
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1sianJyZyIsIuS7iuaXpeWQg+eTnCJdLFsicXdycyIsIuWFqOe9keeDreaQnCJdLFsiZGFyay1oaXN0b3J5Iiwi5pqX5Y+y5qGj5qGIIl0sWyJhd2NnIiwi5pqX572R54iG5paZIl0sWyJkeXdoIiwi5oqW6Z+z572R57qiIl0sWyJmY2xsIiwi5Y+N5beu5Lym55CGIl0sWyJ4eWNnIiwi5a2m55Sf5qCh5ZutIl0sWyJhbndhbmdsdWFubHVuIiwi55yf5a6e5Lmx5LymIl0sWyJzeHpxIiwi56aP5Yip6KeG6aKRIl0sWyJod2F3Iiwi5rW35aSW5aSn54mHIl0sWyJhd2R6IiwiQVbop6Por7QiXSxbImF3bHEiLCLph43lj6PnjI7lpYciXSxbIm1yZHMiLCLmr4/ml6XlpKfotZsiXSxbInRhbmh1YSIsIuaOouiKseWBt+aLjSJdLFsiY3VuemhpIiwi5a+45q2i5oyR5oiYIl0sWyJkbXR0Iiwi5Yqo5ryr5aSp5aCCIl1d";
+
 
 
     @Override
@@ -101,7 +102,7 @@ public class ANW51 extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.ANW51_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         JsonArray outer = JsonParser.parseString(data).getAsJsonArray();
         List<Class> items = new ArrayList<>();

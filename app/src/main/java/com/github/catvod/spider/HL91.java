@@ -9,7 +9,6 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
 
@@ -25,8 +24,6 @@ import org.jsoup.select.Elements;
 
 import java.net.URLEncoder;
 import java.util.concurrent.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.*;
 
 public class HL91 extends Spider {
@@ -35,6 +32,7 @@ public class HL91 extends Spider {
     private static final String defaultUrl = "aHR0cHM6Ly93d3cudnZkd3RkbHouY29t";
     private static final String siteUrl = "aHR0cHM6Ly85MWhsaWFvLmNvbQ";
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1sid3BjeiIsIuS7iuaXpeeDreaWmSJdLFsidG9wcmIiLCJUT1Dng63mppwiXSxbIndobXgiLCLmmI7mmJ/pu5HmlpkiXSxbIm1yZGciLCLnvZHnuqLpu5HmlpkiXSxbInh5ZnEiLCLmoKHlm63po47mg4UiXSxbImR1YW5qdSIsIuaTpui+ueefreWJpyJdLFsiOTF5YyIsIjkx5Y6f5YibIl0sWyJ5cGZ4Iiwi57qm54Ku5YiG5LqrIl0sWyJja3h3Iiwi5ZCD55Oc5paw6Ze7Il0sWyJzeWxwIiwi5rex5aSc5pK454mHIl0sWyJqamRtIiwi56aB5b+M5Yqo5ryrIl0sWyJqZHNqIiwi57uP5YW45LiJ57qnIl1d";
 
 
     @Override
@@ -48,16 +46,13 @@ public class HL91 extends Spider {
 
         for (Element article : doc.select("article")) {
             String imageUrl;
-            Element pic = article.select("script").first();
-            if (pic == null) {
-                Element imgElement = article.select(".blog-background").first();
-                if (imgElement == null) continue;
+            Element imgElement = article.select(".blog-background").first();
+            if (imgElement == null) {
                 imageUrl = imgElement.attr("z-image-loader-url").trim();
             } else {
-                Pattern regex = Pattern.compile("'(https?://[^']+)");
-                Matcher matcher = regex.matcher(pic.data());
-                if (!matcher.find()) continue;
-                imageUrl = matcher.group(1);
+                Element lazyBackground = article.select(".lazy-bg[data-bg]").first();
+                if (lazyBackground == null) continue;
+                imageUrl = lazyBackground.attr("data-bg").trim();
             }
 
             String link = article.select("a").first().attr("href").trim();
@@ -108,7 +103,7 @@ public class HL91 extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.HL91_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         JsonArray outer = JsonParser.parseString(data).getAsJsonArray();
         List<Class> items = new ArrayList<>();

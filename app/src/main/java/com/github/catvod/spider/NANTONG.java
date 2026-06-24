@@ -10,7 +10,6 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
 import com.github.catvod.utils.UnpackUtil;
@@ -33,15 +32,16 @@ public class NANTONG extends Spider {
     private static final ExecutorService executor = Executors.newCachedThreadPool();
     private static final String defaultUrl = "aHR0cHM6Ly93d3cubWtvZnRxemh5LmNj";
     private static final String siteUrl = "aHR0cHM6Ly85MW50LmNvbQ";
-    private static final int PAGE_SIZE = 32;
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1siYWxsIiwi57K+6YCJ5b2x54mHIl0sWyJwb3N0cyIsIuWQjOW/l+W4luWtkCJdLFsieHJiaiIsIumynOiCieiWhOiCjCJdLFsid3RucyIsIuaXoOWll+WGheWwhCJdLFsiemZ5aCIsIuWItuacjeivseaDkSJdLFsiZG1maiIsIuiAvee+juWkqeiPnCJdLFsianJtbiIsIuiCjOiCieeMm+eUtyJdLFsicmhndiIsIuaXpemfqeS4k+WMuiJdLFsib21qZCIsIuasp+e+juW3qOWxjCJdLFsiZHJxaiIsIuWkmuS6uue+pOS6pCJdLFsia2p5cyIsIuWPo+S6pOminOWwhCJdLFsidGpzbSIsIuiwg+aVmVNNIl1d";
+    private static final String DATA_CATE = "eyJhbGwiOltbIuato+WcqOaSreaUviIsIndhdGNoaW5ncyJdLFsi6auY5riFIiwiaGQiXSxbIuW9k+WJjeacgOeDrSIsInBvcHVsYXIiXSxbIuacgOi/keabtOaWsCIsIm5ldyJdLFsi5pys5pyI5pyA54OtIiwibW9uIl0sWyIxMOWIhumSn+S7peS4iiIsIjEwbWluIl0sWyIyMOWIhumSn+S7peS4iiIsIjIwbWluIl0sWyLmr4/mnIjmnIDng60iLCJldmVyeSJdLFsi5pys5pyI5pS26JePIiwiY29sbGVjdCJdLFsi5pS26JeP5pyA5aSaIiwibW9zdCJdLFsi5pys5pyI6K6o6K66IiwiY3VycmVudCJdLFsi5bCP6JOd5Y6f5YibIiwieGlhb2xhbiJdXSwicG9zdHMiOltbIuWFqOmDqCIsImFsbCJdLFsi5ZCM5b+X6buR5paZIiwidHpobCJdLFsi572R57qi54iG5paZIiwid2hibCJdLFsi6bKc6IKJ5aW254uXIiwieHJuZyJdLFsi5q2j6KOF5Yi25pyNIiwienp6ZiJdLFsi5aSp6I+c55S35qihIiwidGNubSJdLFsi6IC9576O5ryr55WqIiwiZG1tZiJdXX0";
     private Map<String, String[][]> ExtendCate;
-
+    private static final int PAGE_SIZE = 32;
 
     @Override
     public void init(Context context, String extend) throws Exception {
         this.FinalBaseUrl = CryptoUtil.base64ToString(defaultUrl);
-        String CateData = CryptoUtil.base64ToString(DataBase.NANTONG_CATE);
+        String CateData = CryptoUtil.base64ToString(DATA_CATE);
         this.ExtendCate = CommonUtil.ParseConfig(CateData);
     }
 
@@ -59,6 +59,7 @@ public class NANTONG extends Spider {
             if (post.toString().contains("data-ad_id")) continue;
             String link = post.attr("href").trim();
             if (link.isEmpty()) continue;
+            if(limit && link.contains("posts/")) continue;
             String name = post.text();
             if (link.startsWith("http")) {
                 int schemeEndIndex = link.indexOf("://") + 3;
@@ -104,7 +105,7 @@ public class NANTONG extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.NANTONG_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         LinkedHashMap<String, List<Filter>> filters = new LinkedHashMap<>();
 

@@ -9,7 +9,6 @@ import com.github.catvod.bean.Vod;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
@@ -32,15 +31,17 @@ public class MISST extends Spider {
     private static final ExecutorService executor = Executors.newCachedThreadPool();
     private static final String defaultUrl = "aHR0cHM6Ly93d3cua2lic2J2cGZ0LmNj";
     private static final String siteUrl = "aHR0cHM6Ly9taXNzYXZ0LmNvbQ";
-    private static final int PAGE_SIZE = 32;
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1sic29ydCIsIueyvumAiSJdLFsiY2lyY2xlIiwi5pel5pysIl0sWyJzdGFycyIsIuWbveS6pyJdLFsidW5jZW5zb3JlZCIsIuaXoOeggSJdLFsiYWN0cmVzc2VzIiwi57Sg5Lq6Il1d";
+    private static final String DATA_CATE = "eyJzb3J0IjpbWyLlvZPliY3mnIDng60iLCJob3QiXSxbIuacgOi/keabtOaWsCIsInJlbmV3Il0sWyLmnKzmnIjmnIDng60iLCJtb250aF9ob3QiXSxbIjEw5YiG6ZKf5Lul5LiKIiwidGVuX21pbnV0ZXMiXSxbIuaUtuiXj+acgOWkmiIsIm1vbnRoX2NvbW1lbnQiXSxbIuacrOaciOiuqOiuuiIsImZhdm9yaXRlIl1dLCJjaXJjbGUiOltbIuS4reaWh+Wtl+W5lSIsImNoaW5lc2Utc3VidGl0bGUiXSxbIuS6uuWmu+eGn+WlsyIsInJlbnFpc2h1bnYiXSxbIuWItuacjeivseaDkSIsInpoaWZ1eW91aHVvIl0sWyLosIPmlZlTTSIsInRpYW9qaWFvU00iXSxbIuWutuW6reS5seS8piIsImppYXRpbmdsdWFubHVuIl0sWyLmnInnoIEiLCJjZW5zb3JlZCJdXSwic3RhcnMiOltbIum6u+ixhiIsIm1hZG91Il0sWyJzd2FnIiwic3dhZyJdLFsi57OW5b+DdmxvZyIsInN3ZWV0LWhlYXJ0LXZsb2ciXSxbImVkbW9zYWljIiwiZWQtbW9zYWljIl0sWyLmipbpmLQiLCJkb3V5aW4iXSxbIjkx5Yi254mH5Y6CIiwiOTEtc3R1ZGlvIl0sWyLlhZTlrZDlhYjnlJ8iLCJtci1yYWJiaXQiXSxbIuWbveS6p+S8oOWqkiIsImRvbWVzdGljLW1lZGlhIl0sWyLmnY/lkKfmjqLoirEiLCJ4aW5nYmF0YW5odWEiXV0sInVuY2Vuc29yZWQiOltbIuaXoOeggea1geWHuiIsInVuY2Vuc29yZWQtbGVhayJdLFsiRkMyIiwiZmMyIl0sWyLkuJzkuqzng60iLCJ0b2t5b2hvdCJdLFsi5Lq65aa75papIiwibWFycmllZHNsYXNoIl0sWyJIRVlaTyIsImhleXpvIl0sWyLml6DnoIHnoLTop6MiLCJyZWR1Y2luZy1tb3NhaWMiXSxbIjEwbXVzdW1lIiwiMTBtdXN1bWUiXSxbInBhY29wYWNvbWFtYSIsInBhY29wYWNvbWFtYSJdLFsieHh4LWF2IiwieHh4LWF2Il0sWyJDYXJpYmJlYW5jb21wciIsImNhcmliYmVhbmNvbXByIl0sWyJDYXJpYmJlYW5jb20iLCJjYXJpYmJlYW5jb20iXSxbIuS4gOacrOmBkyIsIjFwb25kbyJdXSwiYWN0cmVzc2VzIjpbWyJTSVJPIiwic2lybyJdLFsibHVsdSIsImx1eHUiXSxbImdhbmEiLCJnYW5hIl0sWyJQUkVTVElHRVBSRU1JVU0iLCJwcmVzdGlnZS1wcmVtaXVtIl0sWyJTLUNVVEUiLCJzLWN1dGUiXSxbIkFSQSIsImFyYSJdXX0";
     private Map<String, String[][]> ExtendCate;
+    private static final int PAGE_SIZE = 32;
 
 
     @Override
     public void init(Context context, String extend) throws Exception {
         this.FinalBaseUrl = CryptoUtil.base64ToString(defaultUrl);
-        String CateData = CryptoUtil.base64ToString(DataBase.MISST_CATE);
+        String CateData = CryptoUtil.base64ToString(DATA_CATE);
         this.ExtendCate = CommonUtil.ParseConfig(CateData);
     }
 
@@ -102,7 +103,7 @@ public class MISST extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.MISST_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         LinkedHashMap<String, List<Filter>> filters = new LinkedHashMap<>();
 

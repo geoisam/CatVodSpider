@@ -8,7 +8,6 @@ import com.github.catvod.bean.Vod;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
 import com.github.catvod.utils.CommonUtil;
@@ -34,6 +33,7 @@ public class BAIHE extends Spider {
     private static final String defaultUrl = "aHR0cHM6Ly93d3cubmdia3J3by5jYw";
     private static final String siteUrl = "aHR0cHM6Ly9iYWloZTEuY29t";
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1siaG90Iiwi54Ot6ZeoIl0sWyJ0b2RheSIsIuacgOaWsCJdLFsiYmh5YyIsIuWOn+WImyJdLFsid216eSIsIuWUr+e+jiJdLFsic210aiIsIuiwg+aVmSJdLFsiaGprcCIsIue9kee6oiJdLFsib214bCIsIuasp+e+jiJdLFsiYmhkbSIsIuWKqOa8qyJdXQ";
 
 
     @Override
@@ -65,7 +65,7 @@ public class BAIHE extends Spider {
             Future<Vod> future = executor.submit(() -> {
                 String base64Img = PublicData.ALIVIDEO;
                 if (!imageUrl.isEmpty()) {
-                    base64Img = DecImgUtil.loadBackgroundImage(imageUrl);
+                    base64Img = DecImgUtil.loadBackgroundImage(imageUrl,true);
                 }
                 return new Vod(id, name, base64Img);
             });
@@ -93,7 +93,7 @@ public class BAIHE extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.BAIHE_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         JsonArray outer = JsonParser.parseString(data).getAsJsonArray();
         List<Class> items = new ArrayList<>();

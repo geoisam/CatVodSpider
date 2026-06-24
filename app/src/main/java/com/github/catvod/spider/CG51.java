@@ -9,7 +9,6 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
 
@@ -35,6 +34,7 @@ public class CG51 extends Spider {
     private static final String defaultUrl = "aHR0cHM6Ly93d3cuc3Bud2hnYXcuY29t";
     private static final String siteUrl = "aHR0cHM6Ly81MWNnMS5jb20";
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1sid3BjeiIsIuS7iuaXpeWQg+eTnCJdLFsieHN4eSIsIuWtpueUn+agoeWbrSJdLFsid2hobCIsIue9kee6oum7keaWmSJdLFsicmRzaiIsIueDremXqOWkp+eTnCJdLFsiYmtkZyIsIuW/heeci+Wkp+eTnCJdLFsiY2JkaiIsIuaTpui+ueefreWJpyJdLFsid2hteCIsIuaYjuaYn+m7keaWmSJdLFsiaHdjZyIsIua1t+WkluWQg+eTnCJdLFsicnJjZyIsIuS6uuS6uuWQg+eTnCJdLFsibGRjZyIsIumihuWvvOW5sumDqCJdLFsicXViayIsIuWQg+eTnOeci+aIjyJdLFsiY2d4dyIsIuWQg+eTnOaWsOmXuyJdXQ";
 
 
     @Override
@@ -100,7 +100,7 @@ public class CG51 extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.CG51_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         JsonArray outer = JsonParser.parseString(data).getAsJsonArray();
         List<Class> items = new ArrayList<>();

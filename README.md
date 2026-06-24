@@ -1,6 +1,6 @@
 # CatVodSpider
 
-### Based on CatVod
+### \# Based on CatVod
 
 https://github.com/CatVodTVOfficial/CatVodTVSpider
 
@@ -10,7 +10,7 @@ https://github.com/bizhangjie/CatVodSpider
 
 <br>
 
-### 影视资源采集 / TVBox / [EasyBox](https://easybox.pro/download.html) / [MBox](https://github.com/XiaoRanLiu3119/TVBoxOS-Mobile) / 影视仓 / [FongMi影视](https://github.com/FongMi/Release) / 影迷
+### \# 影视资源采集 / TVBox / [EasyBox](https://easybox.pro/download.html) / [MBox](https://github.com/XiaoRanLiu3119/TVBoxOS-Mobile) / 影视仓 / [FongMi影视](https://github.com/FongMi/Release) / 影迷
 
 - **Mobile App** `建议使用EasyBox`
   - <https://www.lanzoux.com/b00v02s58b> `666`
@@ -59,3 +59,18 @@ https://github.com/bizhangjie/CatVodSpider
 | **樱花** | <https://m3u8.apiyhzy.com/api.php/provide/vod/from/yhm3u8/> | `站点搜索关闭` `列表关闭` |
 | **淘片** | <https://taopianapi.com/cjapi/mc10/vod/xml/m3u8.html> | `清晰度低` `贴片广告` `跑马灯广告` |
 | **旺旺短剧** | <https://api.wwzy.tv/api.php/provide/vod/?ac=list> | `贴片广告` |
+
+<br>
+
+### \# 赞赏码（在线乞讨）
+
+<table>
+<tr>
+<td><a>
+<img src="https://raw.githubusercontent.com/geoisam/FuckScripts/refs/heads/main/img/wechat.jpg">
+</a></td>
+<td><a>
+<img src="https://raw.githubusercontent.com/geoisam/FuckScripts/refs/heads/main/img/alipay.jpg">
+</a></td>
+</tr>
+</table>

@@ -9,7 +9,6 @@ import com.github.catvod.bean.Vod;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
@@ -32,15 +31,18 @@ public class TH91 extends Spider {
     private static final ExecutorService executor = Executors.newCachedThreadPool();
     private static final String defaultUrl = "aHR0cHM6Ly93d3cubGJnYmZ5YWIuY2M";
     private static final String siteUrl = "aHR0cHM6Ly85MTF0YW5odWEuY29t";
-    private static final int PAGE_SIZE = 32;
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1sic29ydCIsIuaOouiKseeyvumAiSJdLFsidGFuaHVhLXNoaXBpbiIsIuS5neS4gOaOouiKsSJdLFsieGluZ2JhLXRhbmh1YSIsIuadj+WQp+aOouiKsSJdLFsiZGluZ21laS10YW5odWEiLCLpobbnvo7mjqLoirEiXSxbImh1aXN1by1hbm1vIiwi5Lya5omA5oyJ5pGpIl0sWyJtb3RlLXNpcGFpIiwi5qih54m556eB5ouNIl0sWyJ6aGliby1sdXBpbmciLCLnm7Tmkq3lvZXlsY8iXSxbInpob25na291LWppcWluZyIsIumHjeWPo+a/gOaDhSJdLFsic20tdGlhb2ppYW8iLCJTTeiwg+aVmSJdLFsiamlldG91LWRhc2hhbiIsIuihl+WktOaQreiuqiJdLFsiamlldG91LWNoYW9kaSIsIuihl+WktOaKhOW6lSJdLFsiemhpZnUteW91aHVvIiwi5Yi25pyN6K+x5oORIl0sWyJqaXVkaWFuLXNoZXhpYW5ndG91Iiwi6YWS5bqX5pGE5YOP5aS0Il1d";
+    private static final String DATA_CATE = "eyJzb3J0IjpbWyLlvZPliY3mnIDng60iLCJob3QiXSxbIuacgOi/keabtOaWsCIsInJlbmV3Il0sWyLmnKzmnIjmnIDng60iLCJtb250aF9ob3QiXSxbIjEw5YiG6ZKf5Lul5LiKIiwidGVuX21pbnV0ZXMiXSxbIuaUtuiXj+acgOWkmiIsIm1vbnRoX2NvbW1lbnQiXSxbIuacrOaciOiuqOiuuiIsImZhdm9yaXRlIl1dfQ";
     private Map<String, String[][]> ExtendCate;
+    private static final int PAGE_SIZE = 32;
+
 
 
     @Override
     public void init(Context context, String extend) throws Exception {
         this.FinalBaseUrl = CryptoUtil.base64ToString(defaultUrl);
-        String CateData = CryptoUtil.base64ToString(DataBase.TH91_CATE);
+        String CateData = CryptoUtil.base64ToString(DATA_CATE);
         this.ExtendCate = CommonUtil.ParseConfig(CateData);
     }
 
@@ -102,7 +104,7 @@ public class TH91 extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.TH91_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         LinkedHashMap<String, List<Filter>> filters = new LinkedHashMap<>();
 

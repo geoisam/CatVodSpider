@@ -10,7 +10,6 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
 import com.github.catvod.utils.UnpackUtil;
@@ -33,15 +32,17 @@ public class STGAY extends Spider {
     private static final ExecutorService executor = Executors.newCachedThreadPool();
     private static final String defaultUrl = "aHR0cHM6Ly93d3cuYm9zY2Z3dHZ4LmNvbQ";
     private static final String siteUrl = "aHR0cHM6Ly9zdGdheS5jb20";
-    private static final int PAGE_SIZE = 32;
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1siYWxsIiwi5pCc5ZCM57K+6YCJIl0sWyJuYW50b25nLXhpYW5yb3UiLCLnlLflkIzpspzogokiXSxbInNodWFpZ2UtZmVpamkiLCLluIXlk6Xpo57mnLoiXSxbInpoaWZ1LXlvdWh1byIsIuWItuacjeivseaDkSJdLFsiemh1bnUtdGlhb2ppYW8iLCLkuLvlpbTosIPmlZkiXSxbImppcm91LW1lbmduYW4iLCLogozogonnjJvnlLciXSxbInRvbmd4aW5nLUdtYW4iLCLlkIzmgKdH5ryrIl1d";
+    private static final String DATA_CATE = "eyJhbGwiOltbIuato+WcqOaSreaUviIsInBsYXkiXSxbIuW9k+WJjeacgOeDrSIsImhvdCJdLFsi5pyA6L+R5pu05pawIiwibmV3Il0sWyIxMOWIhumSn+S7peS4iiIsInRlbiJdLFsiMjDliIbpkp/ku6XkuIoiLCJ0d2VudHkiXSxbIuavj+aciOacgOeDrSIsImV2ZXJ5bW9udGhob3QiXSxbIuacrOaciOaUtuiXjyIsIm1vbnRoY29sbGVjdCJdLFsi5pS26JeP5pyA5aSaIiwibWF4Y29sbGVjdCJdLFsi5pys5pyI6K6o6K66IiwibW9udGhjb21tZW50Il1dfQ";
     private Map<String, String[][]> ExtendCate;
+    private static final int PAGE_SIZE = 32;
 
 
     @Override
     public void init(Context context, String extend) throws Exception {
         this.FinalBaseUrl = CryptoUtil.base64ToString(defaultUrl);
-        String CateData = CryptoUtil.base64ToString(DataBase.STGAY_CATE);
+        String CateData = CryptoUtil.base64ToString(DATA_CATE);
         this.ExtendCate = CommonUtil.ParseConfig(CateData);
     }
 
@@ -103,7 +104,7 @@ public class STGAY extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.STGAY_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         LinkedHashMap<String, List<Filter>> filters = new LinkedHashMap<>();
 

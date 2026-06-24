@@ -9,7 +9,6 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
 
@@ -35,6 +34,7 @@ public class BLUEGAY extends Spider {
     private static final String defaultUrl = "aHR0cHM6Ly93d3cueWZpdnhucG8uY2M";
     private static final String siteUrl = "aHR0cHM6Ly94bGd2dy5jb20";
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1sienhibCIsIuacgOaWsOeIhuaWmSJdLFsieHJuZyIsIumynOiCieWltueLlyJdLFsianpiYiIsIumHkeS4u+eIuOeIuCJdLFsidGNubSIsIuWkqeiPnOeUt+aooSJdLFsib25seWZhbnMiLCLogozogonnjJvnlLciXSxbInhhenkiLCLkvZPogrLnlJ8iXSxbInp6eWgiLCLmraPoo4XnoazmsYkiXSxbImh3Y2ciLCLmrKfnvo7lpKfniYciXSxbImR5d2giLCLmipbpn7PnvZHnuqIiXSxbIm14aGwiLCLmmI7mmJ/pu5HmlpkiXSxbIm55dGciLCLok53lj4vmipXnqL8iXSxbInNqbSIsIuWkmuS6uua4uOaIjyJdLFsibGxkZCIsIuebtOeUt+a4uOaIjyJdLFsidHhnbSIsIuWQjOaAp0fmvKsiXV0";
 
 
     @Override
@@ -108,7 +108,7 @@ public class BLUEGAY extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.BLUEGAY_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         JsonArray outer = JsonParser.parseString(data).getAsJsonArray();
         List<Class> items = new ArrayList<>();

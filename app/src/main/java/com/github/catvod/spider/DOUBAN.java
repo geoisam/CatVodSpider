@@ -31,7 +31,7 @@ public class DOUBAN extends Spider {
         Map<String, String> header = new HashMap<>();
         header.put("Host", "frodo.douban.com");
         header.put("Connection", "Keep-Alive");
-        header.put("Referer", "https://servicewechat.com/wx2f9b06c1de1ccfca/99/page-frame.html");
+        header.put("Referer", "https://servicewechat.com/");
         header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781 NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat UnifiedPCWindowsWechat XWEB/19841");
         return header;
     }

@@ -10,7 +10,6 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
 
@@ -34,13 +33,15 @@ public class HJVIDEO extends Spider {
     private static final String defaultUrl = "aHR0cHM6Ly93d3cuc2xobm5haS5jYw";
     private static final String siteUrl = "aHR0cHM6Ly9oanZpZGVvLmNvbQ";
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1siaG90Iiwi6L+R5pyf54Ot6ZeoIl0sWyJ0b2RheSIsIuS7iuaXpeabtOaWsCJdLFsibHVhbmx1biIsIua1t+inkuS5seS8piJdLFsiZG9uZ21hbiIsIua1t+inkuWKqOa8qyJdLFsidGFuaHVhIiwi5rW36KeS5o6i6IqxIl0sWyJrYW5waWFuIiwi5rW36KeS55yL54mHIl0sWyJjaGlndWEiLCLmtbfop5LlkIPnk5wiXV0";
+    private static final String DATA_CATE = "eyJsdWFubHVuIjpbWyLmr43lrZDkubHkvKYiLCJtdXppLWx1YW5sdW4iXSxbIuWFhOWmueS5seS8piIsInhpb25nbWVpLWx1YW5sdW4iXSxbIuWnkOW8n+S5seS8piIsImppZWRpLWx1YW5sdW4iXSxbIueItuWls+S5seS8piIsImZ1bnYtbHVhbmx1biJdXSwiZG9uZ21hbiI6W1si5LiN6ZmQIiwiaGFpamlhby1kb25nbWFuIl0sWyLlkIzkurpI5ryrIiwidG9uZ3Jlbi1obWFuJTIwJTIwIl0sWyLph4znlarliqjmvKsiLCIlMjBsaWZhbi1kb25nbWFuJTIwJTIwIl1dLCJ0YW5odWEiOltbIuS4jemZkCIsImhhaWppYW8tdGFodWEiXSxbIuaOouiKseeyvumAiSIsIiUyMHRhbmh1YS1qaW5neHVhbiUyMCUyMCJdLFsi5bCP5a6d5o6i6IqxIiwieGlhb2Jhby10YW5odWElMjAlMjAiXSxbIueYpueMtOaOouiKsSIsIiUyMHNob3Vob3UtdGFuaHVhJTIwJTIwIl0sWyLliKnlk6XmjqLoirEiLCIlMjBsaWdlLXRhbmh1YSUyMCUyMCJdLFsi6LW15oC75a+76IqxIiwiJTIwemhhb3pvbmcteHVuaHVhJTIwJTIwIl1dLCJrYW5waWFuIjpbWyLkuI3pmZAiLCJoYWlqaWFvLWthbnBpYW4iXSxbIuasp+e+juWkp+eJhyIsIm91bWVpLWRhcGlhbiUyMCUyMCJdLFsi5Zu95Lqn5Ymn5oOFIiwiJTIwZ3VvY2hhbi1qdXFpbmclMjAlMjAiXSxbIuS4reaWh+Wtl+W5lSIsIiUyMHpob25nd2VuLXppbXUlMjAlMjAiXSxbIuaXoOeggemrmOa4hSIsInd1bWEtZ2FvcWluZyUyMCUyMCJdXSwiY2hpZ3VhIjpbWyLkuI3pmZAiLCJoYWlqaWFvLWNnIl0sWyLmmI7mmJ/pu5HmlpkiLCJtaW5neGluZy1oZWlsaWFvJTIwJTIwIl0sWyLlsJHlpofkurrlprsiLCIlMjBzaGFvZnUtcmVucWklMjAlMjAiXSxbIueDremXqOWkp+eTnCIsInJlbWVuLWRhZ3VhJTIwJTIwIl0sWyLnvZHnuqLpu5HmlpkiLCJ3YW5naG9uZy1oZWlsaWFvJTIwJTIwIl1dfQ";
     private Map<String, String[][]> ExtendCate;
 
 
     @Override
     public void init(Context context, String extend) throws Exception {
         this.FinalBaseUrl = CryptoUtil.base64ToString(defaultUrl);
-        String CateData = CryptoUtil.base64ToString(DataBase.HJVIDEO_CATE);
+        String CateData = CryptoUtil.base64ToString(DATA_CATE);
         this.ExtendCate = CommonUtil.ParseConfig(CateData);
     }
 
@@ -69,7 +70,7 @@ public class HJVIDEO extends Spider {
             Future<Vod> future = executor.submit(() -> {
                 String base64Img = PublicData.ALIVIDEO;
                 if (!imageUrl.isEmpty()) {
-                    base64Img = DecImgUtil.loadBackgroundImage(imageUrl);
+                    base64Img = DecImgUtil.loadBackgroundImage(imageUrl,true);
                 }
                 return new Vod(id, name, base64Img);
             });
@@ -97,7 +98,7 @@ public class HJVIDEO extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.HJVIDEO_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         LinkedHashMap<String, List<Filter>> filters = new LinkedHashMap<>();
 

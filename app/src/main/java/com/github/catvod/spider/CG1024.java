@@ -9,7 +9,6 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.CommonUtil;
 import com.github.catvod.utils.CryptoUtil;
-import com.github.catvod.utils.DataBase;
 import com.github.catvod.utils.PublicData;
 import com.github.catvod.utils.DecImgUtil;
 
@@ -36,6 +35,8 @@ public class CG1024 extends Spider {
     private static final String defaultUrl = "aHR0cHM6Ly93d3cuYXphbmp5b2suY2M";
     private static final String siteUrl = "aHR0cHM6Ly8xMDI0Y2cuY29t";
     private String FinalBaseUrl;
+    private static final String DATA_BASE = "W1siY2dreCIsIuS7iuaXpeWQg+eTnCJdLFsibXJkZyIsIuekvuS8muS6i+S7tiJdLFsieHN4eSIsIuWtpueUn+agoeWbrSJdLFsid2hteCIsIue9kee6ouaYjuaYnyJdLFsid2hjZyIsIue0oOS6uum7keaWmSJdLFsid3lmbCIsIue9kem7hOS4k+WMuiJdLFsiaGpsbCIsIua1t+inkuS5seS8piJdLFsibHF0aiIsIuiwg+aVmeeMjuWlhyJdLFsianhkZyIsIuaOouiKseeyvumAiSJdLFsid2hobCIsIuaIkOS6uuWJp+WcuiJdLFsiY3JkbSIsIuaIkOS6uuWKqOa8qyJdXQ";
+
 
 
     @Override
@@ -101,7 +102,7 @@ public class CG1024 extends Spider {
     public String homeContent(boolean filter) throws Exception {
         Document doc = Jsoup.parse(OkHttp.string(FinalBaseUrl));
 
-        String data = CryptoUtil.base64ToString(DataBase.CG1024_BASE);
+        String data = CryptoUtil.base64ToString(DATA_BASE);
 
         JsonArray outer = JsonParser.parseString(data).getAsJsonArray();
         List<Class> items = new ArrayList<>();
