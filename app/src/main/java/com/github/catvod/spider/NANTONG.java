@@ -59,7 +59,7 @@ public class NANTONG extends Spider {
             if (post.toString().contains("data-ad_id")) continue;
             String link = post.attr("href").trim();
             if (link.isEmpty()) continue;
-            if(limit && link.contains("posts/")) continue;
+            if (limit && link.contains("posts/")) continue;
             String name = post.text();
             if (link.startsWith("http")) {
                 int schemeEndIndex = link.indexOf("://") + 3;

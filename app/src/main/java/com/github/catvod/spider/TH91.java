@@ -38,7 +38,6 @@ public class TH91 extends Spider {
     private static final int PAGE_SIZE = 32;
 
 
-
     @Override
     public void init(Context context, String extend) throws Exception {
         this.FinalBaseUrl = CryptoUtil.base64ToString(defaultUrl);

@@ -65,7 +65,7 @@ public class BAIHE extends Spider {
             Future<Vod> future = executor.submit(() -> {
                 String base64Img = PublicData.ALIVIDEO;
                 if (!imageUrl.isEmpty()) {
-                    base64Img = DecImgUtil.loadBackgroundImage(imageUrl,true);
+                    base64Img = DecImgUtil.loadBackgroundImage(imageUrl, true);
                 }
                 return new Vod(id, name, base64Img);
             });

@@ -46,13 +46,13 @@ public class HL91 extends Spider {
 
         for (Element article : doc.select("article")) {
             String imageUrl;
-            Element imgElement = article.select(".lazy-bg[data-bg]").first();
+            Element imgElement = article.select(".blog-background").first();
             if (imgElement == null) {
-                imgElement = article.select(".blog-background").first();
+                imgElement = article.select(".lazy-bg[data-bg]").first();
                 if (imgElement == null) continue;
-                imageUrl = imgElement.attr("z-image-loader-url").trim();
-            } else {
                 imageUrl = imgElement.attr("data-bg").trim();
+            } else {
+                imageUrl = imgElement.attr("z-image-loader-url").trim();
             }
 
             String link = article.select("a").first().attr("href").trim();

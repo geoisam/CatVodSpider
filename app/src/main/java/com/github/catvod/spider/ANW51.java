@@ -38,7 +38,6 @@ public class ANW51 extends Spider {
     private static final String DATA_BASE = "W1sianJyZyIsIuS7iuaXpeWQg+eTnCJdLFsicXdycyIsIuWFqOe9keeDreaQnCJdLFsiZGFyay1oaXN0b3J5Iiwi5pqX5Y+y5qGj5qGIIl0sWyJhd2NnIiwi5pqX572R54iG5paZIl0sWyJkeXdoIiwi5oqW6Z+z572R57qiIl0sWyJmY2xsIiwi5Y+N5beu5Lym55CGIl0sWyJ4eWNnIiwi5a2m55Sf5qCh5ZutIl0sWyJhbndhbmdsdWFubHVuIiwi55yf5a6e5Lmx5LymIl0sWyJzeHpxIiwi56aP5Yip6KeG6aKRIl0sWyJod2F3Iiwi5rW35aSW5aSn54mHIl0sWyJhd2R6IiwiQVbop6Por7QiXSxbImF3bHEiLCLph43lj6PnjI7lpYciXSxbIm1yZHMiLCLmr4/ml6XlpKfotZsiXSxbInRhbmh1YSIsIuaOouiKseWBt+aLjSJdLFsiY3VuemhpIiwi5a+45q2i5oyR5oiYIl0sWyJkbXR0Iiwi5Yqo5ryr5aSp5aCCIl1d";
 
 
-
     @Override
     public void init(Context context, String extend) throws Exception {
         this.FinalBaseUrl = CryptoUtil.base64ToString(defaultUrl);

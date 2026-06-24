@@ -38,7 +38,6 @@ public class CG1024 extends Spider {
     private static final String DATA_BASE = "W1siY2dreCIsIuS7iuaXpeWQg+eTnCJdLFsibXJkZyIsIuekvuS8muS6i+S7tiJdLFsieHN4eSIsIuWtpueUn+agoeWbrSJdLFsid2hteCIsIue9kee6ouaYjuaYnyJdLFsid2hjZyIsIue0oOS6uum7keaWmSJdLFsid3lmbCIsIue9kem7hOS4k+WMuiJdLFsiaGpsbCIsIua1t+inkuS5seS8piJdLFsibHF0aiIsIuiwg+aVmeeMjuWlhyJdLFsianhkZyIsIuaOouiKseeyvumAiSJdLFsid2hobCIsIuaIkOS6uuWJp+WcuiJdLFsiY3JkbSIsIuaIkOS6uuWKqOa8qyJdXQ";
 
 
-
     @Override
     public void init(Context context, String extend) throws Exception {
         this.FinalBaseUrl = CryptoUtil.base64ToString(defaultUrl);
@@ -192,7 +191,7 @@ public class CG1024 extends Spider {
     }
 
     public String extractParagraphs(Document doc) {
-        String[] keywords = {"网址", "浏览器", "免费在线吃瓜", "可能你会感兴趣", "点击下方分享", "站内留言或邮件联系","请理性吃瓜："};
+        String[] keywords = {"网址", "浏览器", "免费在线吃瓜", "可能你会感兴趣", "点击下方分享", "站内留言或邮件联系", "请理性吃瓜："};
         Elements paragraphs = doc.select("article p:not([class])");
         return CommonUtil.extractParagraphs(paragraphs, keywords);
     }
