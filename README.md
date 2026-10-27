@@ -29,7 +29,7 @@ https://github.com/bizhangjie/CatVodSpider
 |  **非凡**  | <https://api.ffzyapi.com/api.php/provide/vod/from/ffm3u8/>           |                      `插播广告` `贴片广告`                       |
 |  **如意**  | <https://cj.rycjapi.com/api.php/provide/vod/from/rym3u8/>            |                      `阴险狡诈` `插播广告`                       |
 |  **天堂**  | <https://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/>     |                      `阴险狡诈` `插播广告`                       |
-|  **优质**  | <https://api.yyzy-tv.vip/inc/api_mac10.php>                          |                      `插播广告` `跑马灯广告`                      |
+|  **优质**  | <https://api.yyzy-tv.vip/inc/apijson.php>                          |                      `插播广告` `跑马灯广告`                      |
 | **360**  | <https://360zy.com/api.php/provide/vod/from/360m3u8/>                |                      `插播广告` `贴片广告`                       |
 |  **虎牙**  | <https://www.huyaapi.com/api.php/provide/vod/from/hym3u8/>           |                          `贴片广告`                          |
 |  **百度**  | <https://api.apibdzy.com/api.php/provide/vod/from/dbm3u8/>           |                          `贴片广告`                          |
